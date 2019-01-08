@@ -3,35 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
-
-    <item android:title="Communicate">
+    <item android:title="Magazyn">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_nowy_produkt"
+                android:icon="@android:drawable/ic_input_add"
+                android:title="Nowy produkt" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_stan_magazynu"
+                android:icon="@android:drawable/ic_menu_sort_by_size"
+                android:title="Stan Magazynu" />
+            <item
+                android:id="@+id/nav_nowe_zamowienie"
+                android:icon="@android:drawable/ic_input_add"
+                android:title="Nowe zamówienie" />
+            <item
+                android:id="@+id/nav_zamowienia"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Zamówienia" />
+        </menu>
+    </item>
+    <item android:title="Hurtownia">
+        <menu>
+            <item
+                android:id="@+id/nav_stan_hurtowni"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Stan" />
+            <item
+                android:id="@+id/nav_oczekujące_zamowienia"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Oczekujące zamowienia" />
         </menu>
     </item>
 

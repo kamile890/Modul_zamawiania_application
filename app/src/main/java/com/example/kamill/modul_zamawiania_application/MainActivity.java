@@ -3,6 +3,7 @@ package com.example.kamill.modul_zamawiania_application;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,16 +24,13 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if(!drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.openDrawer(GravityCompat.START);
+
+        }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            drawer.openDrawer(GravityCompat.START);
         }
     }
 
@@ -80,18 +78,36 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_nowy_produkt) {
+            setTitle("Dodaj produkt");
+            nowy_produkt warehouse = new nowy_produkt();
+            FragmentManager f = getSupportFragmentManager();
+            f.beginTransaction().replace(R.id.fragment, warehouse).commit();
+        } else if (id == R.id.nav_stan_magazynu) {
+            setTitle("Stan magazynu");
+            stan_magazynu warehouse = new stan_magazynu();
+            FragmentManager f = getSupportFragmentManager();
+            f.beginTransaction().replace(R.id.fragment, warehouse).commit();
+        } else if (id == R.id.nav_nowe_zamowienie) {
+            setTitle("Nowe zamówienie");
+            nowe_zamowienie warehouse = new nowe_zamowienie();
+            FragmentManager f = getSupportFragmentManager();
+            f.beginTransaction().replace(R.id.fragment, warehouse).commit();
+        } else if (id == R.id.nav_zamowienia) {
+            setTitle("Zamówienia");
+            zamowienia_magazynu warehouse = new zamowienia_magazynu();
+            FragmentManager f = getSupportFragmentManager();
+            f.beginTransaction().replace(R.id.fragment, warehouse).commit();
+        } else if (id == R.id.nav_stan_hurtowni) {
+            setTitle("Stan hurtowni");
+            stan_hurtowni warehouse = new stan_hurtowni();
+            FragmentManager f = getSupportFragmentManager();
+            f.beginTransaction().replace(R.id.fragment, warehouse).commit();
+        } else if (id == R.id.nav_oczekujące_zamowienia) {
+            setTitle("Zamówienia");
+            zamowienia_hurtownia warehouse = new zamowienia_hurtownia();
+            FragmentManager f = getSupportFragmentManager();
+            f.beginTransaction().replace(R.id.fragment, warehouse).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
