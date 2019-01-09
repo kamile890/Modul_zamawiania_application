@@ -24,9 +24,13 @@ public class stan_hurtowni extends Fragment {
 
     private ListView lista_przedmiotow;
     private DatabaseReference baza;
+    private DataBase_Reference dataBaseReference;
+
 
     public stan_hurtowni() {
         // Required empty public constructor
+        dataBaseReference = new DataBase_Reference();
+
     }
 
 
@@ -37,7 +41,7 @@ public class stan_hurtowni extends Fragment {
         View v = inflater.inflate(R.layout.fragment_stan_hurtowni, container, false);
 
         lista_przedmiotow = v.findViewById(R.id.lista_przedmiotow);
-        baza = FirebaseDatabase.getInstance().getReference();
+        baza = dataBaseReference.getDatebaseRef();
         pobierz_dane_z_hurtowni_i_pokaz_w_liście();
 
 
@@ -68,5 +72,19 @@ public class stan_hurtowni extends Fragment {
         listView.setAdapter(adapter);
     }
 
+    public void setDataBaseReference(DataBase_Reference dataBaseReference) {
+        this.dataBaseReference = dataBaseReference;
+    }
+
+    public void setBaza(DatabaseReference baza) {
+        this.baza = baza;
+    }
+
+    public void setLista_przedmiotow(ListView lista_przedmiotow) {
+        this.lista_przedmiotow = lista_przedmiotow;
+    }
+
 
 }
+
+

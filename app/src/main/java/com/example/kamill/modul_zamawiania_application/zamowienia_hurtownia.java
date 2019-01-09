@@ -26,9 +26,11 @@ public class zamowienia_hurtownia extends Fragment {
 
     private ListView list_view;
     private DatabaseReference baza;
+    private DataBase_Reference dataBaseReference;
 
     public zamowienia_hurtownia() {
         // Required empty public constructor
+        dataBaseReference = new DataBase_Reference();
     }
 
 
@@ -37,7 +39,7 @@ public class zamowienia_hurtownia extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_zamowienia_hurtownia, container, false);
 
-        baza = FirebaseDatabase.getInstance().getReference();
+        baza = dataBaseReference.getDatebaseRef();
         list_view = v.findViewById(R.id.lista_listView);
 
         wyswietl_zamowienia();
@@ -238,4 +240,17 @@ public class zamowienia_hurtownia extends Fragment {
 
 
 
-    }}
+    }
+
+    public void setDataBaseReference(DataBase_Reference dataBaseReference) {
+        this.dataBaseReference = dataBaseReference;
+    }
+
+    public void setList_view(ListView list_view) {
+        this.list_view = list_view;
+    }
+
+    public void setBaza(DatabaseReference baza) {
+        this.baza = baza;
+    }
+}

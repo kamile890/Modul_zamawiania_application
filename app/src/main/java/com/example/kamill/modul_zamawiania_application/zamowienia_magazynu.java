@@ -29,10 +29,12 @@ public class zamowienia_magazynu extends Fragment {
     private DatabaseReference baza;
     private ListView list_view;
     private ArrayList lista_id;
+    private DataBase_Reference dataBaseReference;
     private ArrayList lista_produktow;
 
     public zamowienia_magazynu() {
         // Required empty public constructor
+        dataBaseReference = new DataBase_Reference();
     }
 
 
@@ -41,7 +43,7 @@ public class zamowienia_magazynu extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_zamowienia_magazynu, container, false);
 
-        baza = FirebaseDatabase.getInstance().getReference();
+        baza = dataBaseReference.getDatebaseRef();
         list_view = v.findViewById(R.id.list_view);
 
         wyswietl_zmamowienia();
@@ -110,5 +112,15 @@ public class zamowienia_magazynu extends Fragment {
 
 
     }
+    public void setDataBaseReference(DataBase_Reference dataBaseReference) {
+        this.dataBaseReference = dataBaseReference;
+    }
 
+    public void setBaza(DatabaseReference baza) {
+        this.baza = baza;
+    }
+
+    public void setList_view(ListView list_view) {
+        this.list_view = list_view;
+    }
 }

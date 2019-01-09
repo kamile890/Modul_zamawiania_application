@@ -28,12 +28,16 @@ import java.util.ArrayList;
 public class stan_magazynu extends Fragment {
 
     private ListView lista_przedmiotow_magazyn;
+    private DataBase_Reference dataBaseReference;
     private DatabaseReference baza;
+    private ArrayAdapter arrayAdapter;
 
     ArrayAdapter adapter;
 
     public stan_magazynu() {
         // Required empty public constructor
+        dataBaseReference = new DataBase_Reference();
+
     }
 
     @Override
@@ -41,9 +45,9 @@ public class stan_magazynu extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_stan_magazynu, container, false);
         lista_przedmiotow_magazyn = v.findViewById(R.id.lista_przedmiotow);
-        baza = FirebaseDatabase.getInstance().getReference();
+        baza = dataBaseReference.getDatebaseRef();
         final ArrayList lista_test_wys = new ArrayList();
-        adapter = new ArrayAdapter(stan_magazynu.super.getContext().getApplicationContext(),android.R.layout.simple_list_item_1,lista_test_wys);
+        arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, lista_test_wys);
 
         baza.addValueEventListener(new ValueEventListener() {
             @Override
@@ -61,7 +65,7 @@ public class stan_magazynu extends Fragment {
 
                 }
 
-                lista_przedmiotow_magazyn.setAdapter(adapter);
+                lista_przedmiotow_magazyn.setAdapter(arrayAdapter);
                 lista_przedmiotow_magazyn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -134,6 +138,19 @@ public class stan_magazynu extends Fragment {
 
         return v;
     }
+
+    public void setDataBaseReference(DataBase_Reference dataBaseReference) {
+        this.dataBaseReference = dataBaseReference;
+    }
+
+    public void setLista_przedmiotow_magazyn(ListView lista_przedmiotow_magazyn) {
+        this.lista_przedmiotow_magazyn = lista_przedmiotow_magazyn;
+    }
+
+    public void setBaza(DatabaseReference baza) {
+        this.baza = baza;
+    }
+
 
 
 }

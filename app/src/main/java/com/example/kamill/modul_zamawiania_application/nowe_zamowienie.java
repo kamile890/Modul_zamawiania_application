@@ -41,9 +41,11 @@ public class nowe_zamowienie extends Fragment {
     private ArrayList nazwa;
     private ArrayList liczba;
     private String id_zamowienia;
+    private DataBase_Reference dataBaseReference;
 
     public nowe_zamowienie() {
         // Required empty public constructor
+        dataBaseReference = new DataBase_Reference();
     }
 
 
@@ -60,7 +62,7 @@ public class nowe_zamowienie extends Fragment {
         liczba = new ArrayList();
 
         dodaj_zamowienie_btn = v.findViewById(R.id.dodaj_do_zamowienia_btn);
-        baza = FirebaseDatabase.getInstance().getReference();
+        baza = dataBaseReference.getDatebaseRef();
 
 
         //tworzenie spinnera z przedmiotami
@@ -196,9 +198,11 @@ public class nowe_zamowienie extends Fragment {
         }
     }
 
+    public void setDataBaseReference(DataBase_Reference dataBaseReference) {
+        this.dataBaseReference = dataBaseReference;
+    }
 
-
-
-
-
+    public void setBaza(DatabaseReference baza) {
+        this.baza = baza;
+    }
 }
